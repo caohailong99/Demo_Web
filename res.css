@@ -1,0 +1,72 @@
+
+ 
+.menu {
+    background-image: url(3.jpg);
+    background-size: cover;
+}
+
+.left{
+    position: fixed;
+    padding: 10%;
+    top: auto;
+    left: 0px;
+    width: 100%;
+    height:100%;
+    font-size: 7vw;
+    background-color: pink; 
+}   
+.arow{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.button2{
+    position: fixed;
+    padding: 10px;
+    bottom: 0px;
+    border-radius: 3px;
+    left: 0%;
+    height: 120px;
+    width: 120px;
+    transition: width 2s, height 2s;
+    background-color: rgba(255, 0, 0, 0.671);
+} 
+.text{
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: .8rem;
+}
+
+.button2:hover{
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 59px);
+}
+@media (min-width: 992px){
+    .navbar-expand-lg .navbar-collapse {
+        justify-content: flex-end;
+    }
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+}
+@media (min-width: 1200px){
+    .left{
+        top: auto;
+        left: 0px;
+        width: 50%;
+        font-size: 3em;
+        height:100%;
+        background-color: pink; 
+        padding: 50px;
+    }   
+    .button2{
+        left: 50%;
+    } 
+    .button2:hover{
+        width: 50%;
+    }
+}

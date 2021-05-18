@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">   
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Document_bvngrid</title>
+</head>
+<body>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            background-color: #eef1f6;
+        }
+        .cms{
+            display: flex;
+            flex-direction: row;
+        }
+        .col-left{
+            height: 100vh;
+            width: 80px;
+            background-color: #2e3844;
+            color: #3b4551;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo1{
+            background-color: #2a7ff6;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .col-left ul{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            text-align: center;
+        }
+        .col-left ul li{
+            padding: 15px;
+        }
+        .col-right{
+            height: 100vh;
+            width: calc(100% - 80px);
+            display: flex;
+            flex-direction: column;
+        }
+        .menu{
+            display: flex;
+            flex-direction: row;
+            background-color: #2a7ff6;
+            height: 47px;
+            /* width: calc(100% - 0px); */
+            justify-content: space-between;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        button{
+            background-color: #2a7ff6;
+            color: white;
+        }
+        .main{
+            margin-left: 40px;
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 47px);
+        }
+        .header{
+           display: block;
+           height: 100px;
+           padding: 10px 10px 10px 0px;
+        }
+        .card-title{
+            padding-bottom: 10px;
+            padding-right: 50px;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-line1{
+            height: calc((100vh - 170px) / 3);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .card{
+            background-color: #ffffff;
+            width: calc((100% - 45px) / 4);
+            padding-bottom: 5px;
+        }
+        .card-line1 .card .logo{
+            text-align: center;
+        }
+        .card-line1 .card .card-body{
+            margin-left: 10px;
+        }
+        .card-line2{
+            height: calc((100vh - 170px) / 3);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-top: 20px;
+        }
+        .card2{
+            background-color: #ffffff;
+            width: calc((100% - 30px) / 2);
+            padding-bottom: 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .card2 .text{
+            padding: 10px 0px 0px 10px;
+        }
+        .card2 .left img{
+            padding: 10px 0px 10px 0px;
+        }
+        .card2 .right{
+            padding: 50px 50px 50px 50px;
+        }
+        .card-line3{
+            height: calc((100vh - 170px) / 3);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-top: 20px;
+        }
+        .card3{
+            background-color: #ffffff;
+            width: calc((100% - 30px) / 2);
+            padding-bottom: 5px;
+            display: flex;
+            flex-direction: column;
+            /* justify-content: space-between; */
+        }
+        .card3 .text{
+            padding: 10px 0px 0px 10px;
+        }
+        .card3 img{
+            height: calc(((100vh - 170px) / 3) - 50px);
+        }
+        .list-items:hover{
+            background-color: #2e3844;
+            cursor: pointer;
+            color: white;
+            transition: all 1s ease-in-out;
+            transform: translateX(80px);
+        }
+        .card:hover{
+            background-color: chartreuse;
+            transition: all .3s ease-in;
+            transform: scale(1.25);
+        }
+        .card2:hover{
+            transition: all 1s ease-in;
+            transform: translateY(100px);
+            opacity: 0;
+        }
+        .card3:hover{
+            transition: all .3s ease-in-out;
+            transform: scale(1.1);
+        }
+
+        @media only screen and (max-width: 600px) {
+            .main{
+                display: flex;
+                flex-direction: column;
+            }
+            .card-title{
+                display: flex;
+                flex-direction: row;
+            }
+            .card-line1{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+            }
+            .card{
+                background-color: #ffffff;
+                height: calc((100vh - 30px) / 4);
+                padding-bottom: 5px;
+                margin-bottom: 10px;
+            }
+            .card-line2{
+                display: none;
+            }
+            .card-line3{
+                display: none;
+            }
+        }
+    </style>
+    <!--row-->
+    <div class="cms">
+        <!--col_left-->
+        <div class="col-left">
+            <!--list-->
+            <div class="list">
+                <!--logo-->
+                <div class="logo1">
+                    <i class="fa fa-amazon" style="font-size:24px"></i>
+                </div>
+                <ul>
+                    <li class="list-items" style="color: white;"><i class='fa fa-graduation-cap' style='font-size:24px'></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="list-items"><i class='fa fa-graduation-cap' style='font-size:24px'></i>
+                        <span>Schemas</span>
+                    </li>
+                    <li class="list-items"><i class='fa fa-graduation-cap' style='font-size:24px'></i>
+                        <span>content</span>
+                    </li>
+                    <li class="list-items"><i class='fa fa-graduation-cap' style='font-size:24px'></i>
+                        <span>Asset</span>
+                    </li>
+                    <li class="list-items"><i class='fa fa-graduation-cap' style='font-size:24px'></i>
+                        <span>Webhooks</span>
+                    </li>
+                    <li class="list-items"><i class='fa fa-graduation-cap' style='font-size:24px'></i>
+                        <span><br>API</span>
+                    </li>
+                    <li class="list-items"><i class='fa fa-graduation-cap' style='font-size:24px'></i>
+                        <span>Setting</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--col-right-->
+        <div class="col-right">
+            <!--row-menu-->
+            <div class="menu">
+                <!--menu-left-->
+                <div class="menu-left">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Nike-Store
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                  </div>
+                <!--menu-right-->
+                <div class="menu-right">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="./drp1.jpg" width="20px" height="20px" style="border-radius: 50%;">
+                            Hoang Tuan Tu
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--main-->
+            <div class="main">
+                <!--header-->
+                <div class="header">
+                    <h5><b>Manage your App</b></h5>
+                    <h6>Nike-Store <span style="opacity: 70%;">Dashboard</span></h6>
+                </div>
+                <!--card-title-->
+                <div class="card-title">
+                    <!--card-line1-->
+                    <div class="card-line1">
+                        <!--Card 1-->
+                        <div class="card" style="width: 31.5rem;">
+                            <div class="logo">
+                                <i class="bi bi-tv-fill" style="font-size: 50px; color: #c2dcff;"></i>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>New schemas</b></h5>
+                                <p class="card-text">If defines the structure of your content element</p>
+                            </div>
+                        </div>
+                        <!--Card 2-->
+                        <div class="card" style="width: 31.5rem;">
+                            <div class="logo">
+                                <i class="bi bi-file-break-fill" style="font-size: 50px; color: #f2bcbc;"></i>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>API Documentation</b></h5>
+                                <p class="card-text">Swagger competible docs for app management</p>
+                            </div>
+                        </div>
+                        <!--Card 3-->
+                        <div class="card" style="width: 31.5rem;">
+                            <div class="logo">
+                                <i class="bi bi-map-fill" style="font-size: 50px; color: #f8ca5f;"></i>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Feedback</b></h5>
+                                <p class="card-text">Provide feedback or request new features to help us keep improving</p>
+                            </div>
+                        </div>
+                        <!--Card 4-->
+                        <div class="card" style="width: 31.5rem;">
+                            <div class="logo">
+                                <i class="bi bi-github" style="font-size: 50px; color: #76b95f;"></i>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Github</b></h5>
+                                <p class="card-text">Get source code, report bugs and get support</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--card-line2-->
+                    <div class="card-line2">
+                        <!--Card 1-->
+                        <div class="card2">
+                            <!--Left-->
+                            <div class="left">
+                                <!--Text-->
+                                <div class="text">
+                                    <span><b>API Calls</b></span>
+                                </div>
+                                <!--Chart-->
+                                <div>
+                                    <img src="./Chart1.png">
+                                </div>
+                            </div>
+                            <!--Right-->
+                            <div class="right">
+                                <!--Text-->
+                                <div> 
+                                    <p><span style="font-size: 30px;">12568</span>  <br> API Calls</p>
+                                    <p style="margin-top: 25px;"><span style="opacity: 0.7;">Monthly limit</span>  50k</p> 
+                                </div>
+                            </div>
+                        </div>
+                        <!--Card 2-->
+                        <div class="card2">
+                            <!--Left-->
+                            <div class="left">
+                                <!--Text-->
+                                <div>
+                                    <span><b> Size of Assets</b></span>
+                                </div>
+                                <!--Chart-->
+                                <div>
+                                    <img src="./Chart2.png">
+                                </div>
+                            </div>
+                            <!--Right-->
+                            <div class="right">
+                                <!--Text-->
+                                <div>
+                                    <p><span style="font-size: 30px;">236MB</span>  <br>Uploaded</p>
+                                    <p style="margin-top: 25px;"><span style="opacity: 0.7;">Total limit </span>500MB</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--card-line3-->
+                    <div class="card-line3">
+                    <!--Card 1-->
+                    <div class="card3">
+                        <!--Text-->
+                        <div class="text">
+                            <span><b>API Performance (Miliseconds)</b></span>
+                        </div> 
+                        <!--Chart-->
+                        <div>
+                            <img src="./Chart3.png">
+                        </div>         
+                    </div>
+                    <!--Card 2-->
+                    <div class="card3">
+                        <!--Text-->
+                        <div class="text">
+                            <span><b>Number of Assets</b></span>
+                        </div> 
+                        <!--Chart-->
+                        <div>
+                            <img src="./Chart4.png">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

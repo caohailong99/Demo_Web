@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+    <style>
+        table{
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 70%;
+            margin-top: 20px;
+        }
+        td, th{
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+    <div>
+        <h3 id="time"></h3>
+        <h1>TODO List</h1>
+        <input id="name" />
+        <select id="status">
+            <option value="Todo">Todo</option>
+            <option value="Done">Done</option>
+        </select>
+        <button onclick="method.create()">Thêm mới</button>
+        <button onclick="method.update()">Cập nhật</button>
+        <button onclick="method.delete()">Xóa</button>
+        <table id="table">
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Time</th>
+            </tr>
+        </table>
+    </div>
+    <script>
+    // Xử lý Time
+        var myVar = setInterval(myTimer, 1000);
+        var d;
+        function myTimer() {
+            d = new Date();
+            document.getElementById("time").innerHTML = d.toLocaleTimeString('en-GB');
+        }
+    //data model
+        function data(name, status){ 
+            return{
+            name: name,
+            status: status,
+            time: d.toLocaleTimeString('en-GB'),
+            }
+        }
+        var array = [];
+        var tmp; 
+    //Xử lý chỉnh sửa giá trị
+        function edit(index){
+            document.getElementById("name").value = array[index].name;
+            document.getElementById("status").value = array[index].status;
+            tmp = index;
+            console.log(tmp);
+        }
+    //Biến đổi màu
+        function color(status, tag){
+            setTimeout(function(){
+            if(status == "Todo") tag.style.backgroundColor = "#35c772";
+            if(status == "Done") tag.style.backgroundColor = "#6945cc";
+        }, 3000);
+        }
+    //Thêm thuộc tính td (chèn thêm vào bảng)    
+        function addElement(element, value){
+            var element = document.createElement('td');
+            var value = document.createTextNode(value); //khai báo biến value và trả nó về dạng node để dùng cho appendChild()
+            element.appendChild(value); //nối giá trị valuevào td mới
+            return element;
+        }
+        var value;
+        var k=0, i=1;
+
+        var method = {
+            create: function(){
+                var name = document.getElementById("name").value;
+                var status = document.getElementById("status").value;
+                value = data(name, status);
+                array.push(value);
+                this.read();
+            },
+            read: function(){
+    //Thêm các gtri name, status, Time
+                var tr = document.createElement("tr"); //tạo Element tr trong thẻ table
+                tr.id = `ind${k}`; //đặt id cho tr là k, k có thể tự động thay đổi gtri index
+                //vòng lặp
+                tr.setAttribute('onclick','edit('+k+');'); //khi click vào thì hàm edit sẽ đc kích hoạt từ vị trí có index là k
+                //tạo biến name, status,time và gán nó vào element td có value tương ứng
+                var name = addElement('td', value.name); 
+                var status = addElement('td', value.status);
+                var time = addElement('td', value.time)
+                tr.appendChild(name); //nối gtri name vào element tr
+                tr.appendChild(status);
+                tr.appendChild(time);
+                document.getElementById("table").appendChild(tr); //lấy gtri đc nối vào tr ở trên để in vào bảng
+                color(value.status, tr); //đổi màu sau 3s
+                k++; //tăng k lên 1đv và quay lại dòng 96 -> kết thúc vòng lặp
+            },
+            update: function(){
+                var name = document.getElementById("name").value;
+                var status = document.getElementById("status").value;
+                //gọi lại 2 gtri name. status (2 gtri nay ở input) ở hàm edit
+                array[tmp].name = name; 
+                array[tmp].status = status;
+                var tmp_name = document.createTextNode(name); //chuyển name (đang ở dạng string) về dạng node
+                var tmp_status = document.createTextNode(status);
+                var item = document.getElementById(`ind${tmp}`).childNodes[0]; //gán item vs gtri index của ChildNode[0] (phần tên)
+                var item2 = document.getElementById(`ind${tmp}`).childNodes[1];
+                item.replaceChild(tmp_name, item.childNodes[0]); //thay thế text node cũ bằng text node mới là t_name
+                item2.replaceChild(tmp_status,item2.childNodes[0]);
+                color(status, document.getElementById(`ind${tmp}`))
+            },
+            delete: function(){
+                var r = document.getElementById(`ind${tmp}`);
+                r.remove();
+                }
+            } 
+    </script>
+</body>
+</html> 

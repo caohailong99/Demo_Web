@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <link type="text/css" rel="stylesheet" href="./style.css"/>
+    <title>Slide</title>
+</head>
+<body>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
+            justify-content: center;
+        }
+        img{
+            height: 70px;
+            position: absolute;
+            cursor: pointer;
+            transition: all .6s ease-in-out;
+        }
+        .big{
+            right: calc(50% - 60px);
+            top: 20px;
+        }
+        .medium{
+            filter: opacity(0.5);
+            height: 50px;
+            top: 10px;
+        }
+        .small{
+            filter: opacity(0.2);
+            height: 20px;
+            top: 0;
+        }
+        .medium.left{
+            right: calc(50% + 50px);           
+        }
+        .medium.right{
+            right: 0;
+        }
+        .small.right{
+            right: calc(50% - 40px);
+        }
+        .small.left{
+            right: calc(50% + 10px);
+        }
+        .control{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 278px;
+            height: 50px;
+        }
+    </style>
+    <div class="control">
+        <img src="./hinh-anh-dep-chat-luong-001.jpg" class="big"/>
+        <img src="./hinh-anh-dep-chat-luong-001.jpg" class="medium right"/>
+        <img src="./hinh-anh-dep-chat-luong-001.jpg" class="small right"/>
+        <img src="./hinh-anh-dep-chat-luong-001.jpg" class="medium left"/>
+        <img src="./hinh-anh-dep-chat-luong-001.jpg" class="small left"/>
+    </div>
+    <script>
+        var array=["big","medium right","small right","medium left","small left"];
+        function next(){
+            var getV=array.pop();
+            array.unshift(getV);
+            $('img').each(function(i,v){
+                $('img').eq(i).attr('class',array[i]);
+            });
+        }
+        function prev(){
+            var getV=array.shift();
+            array.push(getV);
+            $('img').each(function(i,v){
+                $('img').eq(i).attr('class',array[i]);
+            });
+        }
+        var width=$('body').width();
+        $(window).mousedown(function(event) {
+            var getX= event.pageX;
+            if(getX > width/2){
+                prev();
+            }else{
+                next();
+            }
+        });
+    </script>
+</body>
+</html>

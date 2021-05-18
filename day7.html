@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./bootstrap-5.0.0-beta3-dist/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <title>Animation</title>
+</head>
+<body>
+    <style>
+        body{
+            background: black;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .circle{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            border-radius: 50%;
+            transition: all 1s ease-in-out;
+        }
+        div{
+            background-color: red;
+            position: relative;
+            animation-name: example;
+            animation-duration: 4s;
+            animation-delay: 2s;
+            animation-iteration-count: 2;
+            animation-direction: alternate;  
+        }
+        div.circle{
+            width: 300px;
+            height: 200px;
+            background-color: yellow;
+            transform: rotate(180deg);
+        }
+        div:hover{
+            background-color: chartreuse;
+            transition: all .5s ease-in-out;
+            transform: scale(2);
+            transform: translate(400px);
+            opacity: 0%;
+        }
+        img{
+            transition: 1s ease-in-out;
+            display: block;
+            padding: 20px 20px 20px 50px;
+        }
+        .rotate:hover{
+            transform: rotate(5turn);
+            -moz-transform: rotate(5turn);
+            -webkit-transform: rotate(5turn);
+            transform-origin: 300% 300%;
+            -moz-transform-origin: 300% 300%;
+            -webkit-transform-origin: 300% 300%;
+        }
+        .scale:hover{
+            transform: scaleX(-1.5);
+            -moz-transform: scaleX(-1.5);
+            -webkit-transform: scaleX(-.5);
+            transform-origin: 150% 150%;
+            -moz-transform-origin: 150% 150%;
+            -webkit-transform-origin: 150% 150%;
+        }
+        .skew:hover{
+            transform: skewX(-65deg);
+            -moz-transform: skewX(-65deg);
+            -webkit-transform: skewX(-65deg);
+            transform-origin: 100% 100%;
+            -moz-transform-origin: 100% 100%;
+            -webkit-transform-origin: 100% 100%;
+        }
+        @keyframes example{
+            0%   {background-color:red; left:0px; top:0px;}
+            25%  {background-color:yellow; left:200px; top:0px;}
+            50%  {background-color:blue; left:200px; top:200px;}
+            75%  {background-color:green; left:0px; top:200px;}
+            100% {background-color:red; left:0px; top:0px;}
+        } 
+        @media only screen and (max-width: 575px){
+        
+        }
+        @media only screen and (min-width: 576px){
+       
+        }
+        @media only screen and (min-width: 768px){
+        
+        }
+        @media only screen and (min-width: 992px){
+        
+        }
+    </style>
+    <div class="circle">
+
+    </div>
+    <img class="rotate" src="https://i.imgur.com/6xM7wdY.png"/>
+    <img class="scale" src="https://i.imgur.com/6xM7wdY.png"/>
+    <img class="skew" src="https://i.imgur.com/6xM7wdY.png"/>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Class:</p>
+    <input id="value1" />
+    <br/>
+    <p>Student:</p>
+    <input id="value2" />
+    <button type="button" onclick="add()">Thêm</button>
+    <button type="button" onclick="print()">In ra</button>
+    <script>
+        let mangA=[];
+        function add(){
+            var a = document.getElementById('value1').value;
+            var b = document.getElementById('value2').value;
+            var c = a.toUpperCase() + "-" + b.toUpperCase();
+       		mangA.push(c);
+       		console.log(c);
+       		console.log(mangA);
+    		alert('Thêm thành công');
+        }
+        function filterClass(classtxt) {
+        	let d=document.getElementById('value1').value;
+        	console.log(d.toUpperCase());
+        	console.log(classtxt+' day la');
+        	console.log(classtxt.includes(d.toUpperCase()));
+        	if (classtxt.includes(d.toUpperCase())==true) {
+        		return classtxt;
+        	}
+        }
+        function print(){
+        	console.log('mang A co : ' + mangA.length + ' phan tu');
+          document.getElementById('main1').innerHTML = "<li>"+ mangA.filter(filterClass) + "</li> <br>"; 
+        }  
+    </script>
+    <br/>
+    <h3>Danh sách:</h3>
+    <ul id="main1">
+        
+   	</ul> 
+</body>
+</html>
